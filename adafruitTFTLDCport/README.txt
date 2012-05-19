@@ -20,7 +20,7 @@ I used FSMC D[8:15] pins on the stm32f4, with the adafruit '2.8" 18-bit color TF
 would work with avr µControllers (read: arduino). Bummer it's hardwired that way, it could be 2X as fast with the stm32f4,
 than it is w/ 8 bit data bus.
 
-You can use D[0:7] if you want, it seems to work. But LED5 and LED6 or on pins FSMC D0 and D1 and the signal is a bit droopy because
+You can use D[0:7] if you want, it seems to work. But LED5 and LED6 are on pins FSMC D0 and D1 and the signal is a bit droopy because
 of that. To use D[0:7], go into TFTLCD.c, line 870 or so, (/********************************** low level readwrite interface */)
 and comment out the d[8:15] versions of
 writeData
