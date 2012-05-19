@@ -70,7 +70,7 @@ int main(void)
     STM_EVAL_LEDInit(LED4);
     STM_EVAL_LEDInit(LED3);
     // You can use these for LEDs if you use the upper 8 bits of the 16b FSMC bus to talk to the ILI9328.
-    // STM_EVAL_LEDInit(LED5); //GPIOD 14 -> FSMC D0. Do not use for LED, we need them to talk to the ILI9238
+    // STM_EVAL_LEDInit(LED5); //GPIOD 14 -> FSMC D0. Do not use for LED, we need them to talk to the ILI9328
     // STM_EVAL_LEDInit(LED6); //GPIOD 14 -> FSMC D1.
 
    
