@@ -125,13 +125,15 @@ void initGPIO(void)
 
 // reset
 
-    init.GPIO_Pin=GPIO_Pin_1;                               // reset pin
+    init.GPIO_Pin=GPIO_Pin_1;                               // reset pin -> PE1
     init.GPIO_Mode=GPIO_Mode_OUT;
     init.GPIO_Speed=GPIO_Speed_100MHz;
     // init.GPIO_Speed=GPIO_Speed_50MHz;
     // init.GPIO_Speed=GPIO_Speed_2MHz;
 
     GPIO_Init(GPIOE,&init);
+
+// PORTD
 
     GPIO_PinAFConfig(GPIOD, GPIO_PinSource0, GPIO_AF_FSMC); // D2
     GPIO_PinAFConfig(GPIOD, GPIO_PinSource1, GPIO_AF_FSMC); // D3
@@ -868,6 +870,7 @@ void drawPixel(uint16_t x, uint16_t y, uint16_t color)
 /********************************** low level readwrite interface */
 
 // the RS (C/D) pin is high during write
+// d[0:7] version
 // void writeData(uint16_t data) 
 // {
 //     
@@ -879,6 +882,7 @@ void drawPixel(uint16_t x, uint16_t y, uint16_t color)
 //     *fsmcData=data;
 //     // return retvl;
 // }
+
 // d[8:15] version
 void writeData(uint16_t data) 
 {
@@ -893,12 +897,14 @@ void writeData(uint16_t data)
 }
 
 // the RS (C/D) pin is low during write
+// d[0:7] version
 // void writeCommand(uint16_t cmd) 
 // {
 //     *fsmcRegister=(cmd >> 8);
 //     // uDelay(0);
 //     *fsmcRegister=cmd;
 // }
+
 // d[8:15] version
 void writeCommand(uint16_t cmd) 
 {
@@ -907,6 +913,7 @@ void writeCommand(uint16_t cmd)
     *fsmcRegister=cmd<<8;
 }
 
+// d[0:7] version
 // uint16_t readData() 
 // {
 //     uint16_t d = 0;
